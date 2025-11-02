@@ -19,7 +19,15 @@ function checkForAuthenticationCookie(cookieName) {
     }
 }
 
+
+function requireLogin(req, res, next) {
+  if (!req.user) return res.redirect('/user/signin');
+  next();
+}
+
+
 module.exports = {
     checkForAuthenticationCookie,
+    requireLogin,
 }
 

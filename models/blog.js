@@ -15,6 +15,7 @@ const blogSchema = new Schema({
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: "user",
+        required: true,
     },
 }, {
     timestamps: true

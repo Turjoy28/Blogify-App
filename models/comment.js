@@ -1,5 +1,21 @@
 const { Schema, model } = require('mongoose')
 
+
+const replySchema=new Schema({
+    content:{
+        type:String,
+        required:true,
+    },
+    createdBy:{
+        type:Schema.Types.ObjectId,
+        ref:"user",
+        required:true,
+    },
+   
+},{timestamps:true})
+
+
+
 const commentSchema = new Schema({
     content: {
         type: String,
@@ -13,8 +29,10 @@ const commentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "user",
     },
+    replies:[replySchema],
 }, { timestamps: true }
 )
+
 
 const Comment=model("comment",commentSchema);
 module.exports=Comment;
