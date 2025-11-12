@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use(checkForAuthenticationCookie('token'))
 app.use(express.static(path.join(__dirname,"public")))
 
+console.log("Views directory:", path.join(__dirname, "views"));
 
 app.get('/', async (req, res) => {
     const allBlogs = await Blog.find();
